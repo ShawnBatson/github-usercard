@@ -3,6 +3,30 @@
            https://api.github.com/users/<your name>
 */
 
+axios 
+  .get('https://api.github.com/users/ShawnBatson')
+  .then((res) => {
+    console.log(res);
+    const followCard = (res.data);
+    createCard(followCard);
+
+    followersArray.forEach((input) => {
+      for (i = 0; i < followersArray.length; i++);
+      const followerCard = (input.res.data);
+      createCard(followerCard);
+
+ 
+      })
+
+    })
+
+  .catch((err) => {
+    console.log("you hit an error", err);
+  })
+
+
+
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
@@ -24,7 +48,7 @@
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['avpimblesr', 'tanveersaleem786', "mtrew2015", "williamschwindt", "scratchglory", "HeyMichelle"];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -45,6 +69,53 @@ const followersArray = [];
 </div>
 
 */
+const cards = document.querySelector('.cards');
+
+
+
+function createCard(obj) {
+    const card = document.createElement ('div');
+    const img = document.createElement('img');
+    const cardInfo = document.createElement('div');
+    const title = document.createElement('h3');
+    const nameUser = document.createElement('p');
+    const loc = document.createElement('p');
+    const prof = document.createElement('p');
+    const followers = document.createElement('p');
+    const following = document.createElement('p');
+    const bio = document.createElement('p');
+
+
+cards.appendChild(img);
+cards.appendChild(cardInfo);
+cardInfo.appendChild(title);
+cardInfo.appendChild(nameUser);
+cardInfo.appendChild(loc);
+cardInfo.appendChild(prof);
+cardInfo.appendChild(followers);
+cardInfo.appendChild(following);
+cardInfo.appendChild(bio);
+
+cards.classList.add('card');
+cardInfo.classList.add('card-info');
+title.classList.add('name');
+nameUser.classList.add('username');
+
+img.src = obj.avatar_url;
+title.textContent = obj.name;
+nameUser.textContent = obj.login;
+loc.textContent =  "Location: " + obj.location;
+prof.textContent = "Profile: " + obj.html_url;
+followers.textContent = "Followers: " + obj.followers;
+following.textContent = "Following: " + obj.following;
+bio.textContent = "Bio: " + obj.bio;
+
+return cards
+
+}
+
+
+
 
 /* List of LS Instructors Github username's: 
   tetondan
