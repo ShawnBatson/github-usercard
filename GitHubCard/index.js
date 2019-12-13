@@ -11,7 +11,8 @@ axios
     createCard(followCard);
 
     followersArray.forEach((objer) => {
-      cards.appendChild(createCard(followersArray.data));
+      axios.get(`https://api.github.com/users/${[i]}`)
+      cards.append(createCard(objer));
       })
 
     })
@@ -110,7 +111,9 @@ return cards
 
 }
 
-
+followersArray.forEach((objer) => {
+  cards.appendChild(createCard(objer));
+  })
 
 
 /* List of LS Instructors Github username's: 
