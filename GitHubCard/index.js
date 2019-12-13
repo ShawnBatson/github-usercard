@@ -10,12 +10,8 @@ axios
     const followCard = (res.data);
     createCard(followCard);
 
-    followersArray.forEach((input) => {
-      for (i = 0; i < followersArray.length; i++);
-      const followerCard = (input.res.data);
-      createCard(followerCard);
-
- 
+    followersArray.forEach((objer) => {
+      cards.appendChild(createCard(followersArray.data));
       })
 
     })
