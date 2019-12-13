@@ -10,16 +10,12 @@ axios
     const followCard = (res.data);
     createCard(followCard);
 
-    followersArray.forEach((objer) => {
-      axios.get(`https://api.github.com/users/${[i]}`)
-      cards.append(createCard(objer));
-      })
-
     })
 
   .catch((err) => {
     console.log("you hit an error", err);
   })
+
 
 
 
@@ -111,10 +107,21 @@ return cards
 
 }
 
-followersArray.forEach((objer) => {
-  cards.appendChild(createCard(objer));
-  })
+let nextInLine = followersArray.foreach((data) => {
+  for (let i=0; i<items.length; i++) {
+  axios
+    .get('https://api.github.com/users/' + followersArray[i])
+    .then((res1 => {
+      console.log(res1);
+      const followerCard = (res.data);
+    createCard(followerCard);
+    }))
 
+    .catch((err) => {
+      console.log("you hit an error", err);
+    })
+  }
+})
 
 /* List of LS Instructors Github username's: 
   tetondan
